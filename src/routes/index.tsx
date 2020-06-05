@@ -1,55 +1,51 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Outlet, useRoutes, Navigate } from 'react-router-dom';
 
 import { routes, mockAuthed } from '../config';
 
 const Home = (): ReactElement => <div>Home</div>;
 const Login = (): ReactElement => <div>Login</div>;
-const NotFound = (): ReactElement => <div>404</div>;
 
-const PrivateRoute = ({
-  component,
-  path,
-  exact,
-  ...options
-}: {
-  component: FunctionComponent;
-  path: string;
-  exact: boolean;
-}): ReactElement => {
-  if (mockAuthed) {
-    return (
-      <Route path={path} exact={exact} component={component} {...options} />
-    );
+/** Check for auth */
+const ProtectedPage = (): ReactElement => {
+  if (!mockAuthed) {
+    return <Navigate to={routes.login} />;
   }
 
-  return <Redirect to={{ pathname: routes.login }} />;
+  return <Outlet />;
 };
 
-const AuthRoute = ({
-  component,
-  path,
-  ...options
-}: {
-  component: FunctionComponent;
-  path: string;
-}): ReactElement => {
-  if (!mockAuthed) {
-    return <Route path={path} component={component} {...options} />;
+/** If authed, send to home */
+const AuthPage = (): ReactElement => {
+  if (mockAuthed) {
+    return <Navigate to={routes.home} />;
   }
 
-  return <Redirect to={{ pathname: routes.home }} />;
+  return <Outlet />;
 };
 
 const AppRouter: React.FC = () => {
-  return (
-    <Switch>
-      <PrivateRoute path={routes.home} exact component={Home} />
-      <AuthRoute path={routes.login} component={Login} />
-      <Route component={NotFound} />
-    </Switch>
-  );
+  const element = useRoutes([
+    { path: '/', element: <Home /> },
+    {
+      path: 'login',
+      element: <AuthPage />,
+      children: [{ path: '/', element: <Login /> }],
+    },
+    {
+      path: 'users',
+      element: <ProtectedPage />,
+      children: [
+        { path: '/', element: <div>Protected Page</div> },
+        { path: ':id', element: <div>Protected User Profile</div> },
+        { path: 'me', element: <div>Protected Profile</div> },
+      ],
+    },
+    { path: '*', element: <div>404</div> },
+  ]);
+
+  return element;
 };
 
 export default AppRouter;

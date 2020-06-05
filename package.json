@@ -47,8 +47,8 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-query": "^1.0.29",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router": "^6.0.0-alpha.5",
+    "react-router-dom": "^6.0.0-alpha.5"
   },
   "scripts": {
     "start": "react-scripts start",
