@@ -1,6 +1,8 @@
 ![CI](https://github.com/brygrill/cra-template/workflows/CI/badge.svg)
 
-Updated CRA template with TypeScript configuration and react-router.
+Updated CRA
+[template repo](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+with TypeScript configuration and react-router v6.
 
 ---
 
