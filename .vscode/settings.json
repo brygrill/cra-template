@@ -1,0 +1,5 @@
+{
+  "eslint.packageManager": "yarn",
+  "editor.renderWhitespace": "all",
+  "editor.formatOnSave": true
+}
