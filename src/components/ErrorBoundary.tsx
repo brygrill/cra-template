@@ -25,7 +25,7 @@ class ErrorBoundary extends Component<Props, State> {
     const { error } = this.state;
     const { fallback, children } = this.props;
     if (error) {
-      return <div>{fallback}</div>;
+      return <>{fallback}</>;
     }
     return children;
   }
