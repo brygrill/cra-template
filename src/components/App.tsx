@@ -9,7 +9,7 @@ import Loading from './Loading';
 const App = (): ReactElement => {
   return (
     <SuspenseWrapper
-      suspenseFallback={<Loading />}
+      suspenseFallback={<Loading content="Loading app" />}
       errorFallback="Serious error!"
     >
       <BrowserRouter>

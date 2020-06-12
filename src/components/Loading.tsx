@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Loading = () => {
-  return <div>Loading...</div>;
+const Loading = ({
+  content = 'Loading...',
+}: {
+  content?: string;
+}): ReactElement => {
+  return <div>{content}</div>;
 };
 
 export default Loading;
