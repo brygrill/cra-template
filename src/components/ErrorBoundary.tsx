@@ -1,7 +1,7 @@
 import React, { Component, ReactElement } from 'react';
 
 interface Props {
-  render: Function;
+  fallback: ReactElement;
   children: ReactElement;
 }
 
@@ -23,9 +23,9 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render(): ReactElement {
     const { error } = this.state;
-    const { render, children } = this.props;
+    const { fallback, children } = this.props;
     if (error) {
-      return <div>{render()}</div>;
+      return <div>{fallback}</div>;
     }
     return children;
   }
