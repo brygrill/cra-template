@@ -1,7 +1,7 @@
-// https://reactjs.org/docs/concurrent-mode-patterns.html#transitions-are-everywhere
-import React from 'react';
+// https://reactjs.org/docs/concurrent-mode-patterns.html#baking-transitions-into-the-design-system
+import React, { ReactElement } from 'react';
 
-const Button = () => {
+const Button = (): ReactElement => {
   return <button type="button">Button</button>;
 };
 

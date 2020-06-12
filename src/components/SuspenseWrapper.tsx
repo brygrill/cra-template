@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Suspense, ReactElement } from 'react';
 
 import ErrorBoundary from './ErrorBoundary';
 
@@ -13,9 +13,7 @@ const SuspenseWrapper = ({
 }): ReactElement => {
   return (
     <ErrorBoundary fallback={<>{errorFallback}</>}>
-      <React.Suspense fallback={<>{suspenseFallback}</>}>
-        {children}
-      </React.Suspense>
+      <Suspense fallback={<>{suspenseFallback}</>}>{children}</Suspense>
     </ErrorBoundary>
   );
 };
