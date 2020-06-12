@@ -9,6 +9,7 @@ interface State {
   error: null | Error;
 }
 
+// https://codesandbox.io/s/adoring-goodall-8wbn7
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     error: null,
