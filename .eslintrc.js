@@ -34,6 +34,7 @@ module.exports = {
     'import/extension': 'off',
     'import/prefer-default-export': 'off',
     'react/state-in-constructor': ['warn', 'never'],
+    'react/require-default-props': 'off',
     'prettier/prettier': [
       'error',
       {
